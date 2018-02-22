@@ -9,10 +9,8 @@ class GuessTest < MiniTest::Test
     combination = Combination.new
     guess = Guess.new("rgby", combination)
     assert_instance_of Guess, guess
+    assert_equal false, guess.correct?
     assert_equal "Incorrect.", guess.feedback
-
-
-
   end
 
 
