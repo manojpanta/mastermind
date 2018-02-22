@@ -7,7 +7,7 @@ class Guess
   end
 
   def correct?
-    @response.downcase == @string.combination
+    @response.downcase == @string.sequence
   end
 
   def feedback

@@ -1,19 +1,36 @@
 # require './lib/text_files'
+require_relative 'guess'
+require_relative 'sequence'
 class Mastermind
-  attr_reader :guesses, :right_guesses
+  attr_reader :right_guesses, :current_count, :guesses
   def initialize
+    # @combination = combination
     @guesses = []
-    @right_guesses = []
+    @current_count = 0
+    @right_guesses = 0
+  end
+
+  def record_guesses(answer)
+
+    @guesses << answer.response
+    # @guesses << answer
+    @current_count += 1
+    if answer.correct?
+      @right_guesses += 1
+    end
+    require'pry' ; binding.pry
+    @guesses.count
+
+
+
+
+
 
   end
 
-  def actual_combination
-    ["r", "g", "b", "y" ].sample(4).join
-  end
 
-  def correct?(answer)
-    return "that is awesome" if answer == actual_combination
-  end
+
+
 
   def start
     puts header
@@ -39,6 +56,10 @@ class Mastermind
   end
 
   def play
+    header
+
+    starter
+    instructions
     start
     percentage
   end
