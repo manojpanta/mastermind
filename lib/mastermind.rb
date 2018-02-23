@@ -6,7 +6,6 @@ class Mastermind
     @thing = Combination.new
     @guesses = []
     @right_guesses = 0
-    @id = "nothing"
   end
 
   def record_guesses(answer)
@@ -21,7 +20,7 @@ class Mastermind
 
   def initial_input
     puts header
-    answer = gets.chomp
+    answer = gets.chomp.downcase
       if answer == "p"
         starter
         game_over
@@ -48,7 +47,7 @@ class Mastermind
       puts guess1.feedback
     end
     until @right_guesses == 1
-      puts "do You want to continue? Y for Yes , N for No"
+      puts "do You want to continue? Enter Y for Yes , N for No"
       answer = gets.chomp.downcase
       if answer == "y"
         starter
