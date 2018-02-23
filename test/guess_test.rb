@@ -2,7 +2,7 @@ require "minitest/autorun"
 require "minitest/pride"
 # require "pry"
 require "./lib/guess"
-require "./lib/sequence"
+require "./lib/combination"
 
 class GuessTest < MiniTest::Test
   def test_if_exists

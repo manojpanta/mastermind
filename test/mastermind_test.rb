@@ -2,7 +2,7 @@ require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/mastermind'
-require './lib/sequence'
+require './lib/combination'
 # require './lib/text_files'
 
 class MastermindTest < MiniTest::Test

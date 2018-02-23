@@ -1,7 +1,7 @@
 require "minitest/autorun"
 require "minitest/pride"
 require "pry"
-require "./lib/sequence"
+require "./lib/combination"
 
 class CombinationTest < MiniTest::Test
 
