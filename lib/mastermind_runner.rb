@@ -2,4 +2,4 @@ require "./lib/mastermind"
 
 mastermind = Mastermind.new
 
-mastermind.play
+mastermind.initial_input

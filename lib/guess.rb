@@ -1,9 +1,10 @@
+require './lib/sequence'
 class Guess
   attr_reader :response
 
   def initialize(response, string)
     @response = response
-    @string = string
+    @string = Combination.new(string)
   end
 
   def correct?

@@ -13,7 +13,6 @@ class MastermindTest < MiniTest::Test
 
 
     mastermind = Mastermind.new
-    # require'pry' ; binding.pry
     assert_instance_of Mastermind, mastermind
   end
 
@@ -21,8 +20,13 @@ class MastermindTest < MiniTest::Test
     combination = Combination.new
     guess = Guess.new("rgby", combination)
     mastermind = Mastermind.new
+    require'pry' ; binding.pry
     assert_equal 1, mastermind.record_guesses(guess)
+    assert_equal "Incorrect.", mastermind.initial_input
+
+
   end
+
 
 
   # def test_right_guesses

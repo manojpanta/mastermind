@@ -2,70 +2,75 @@
 require_relative 'guess'
 require_relative 'sequence'
 class Mastermind
-  attr_reader :right_guesses, :current_count, :guesses
+  attr_reader :right_guesses, :guesses, :thing
   def initialize
-    # @combination = combination
+    @thing = Combination.new
     @guesses = []
-    @current_count = 0
     @right_guesses = 0
+    @id = "nothing"
   end
 
   def record_guesses(answer)
 
-    @guesses << answer.response
-    # @guesses << answer
-    @current_count += 1
+    @guesses << answer
     if answer.correct?
       @right_guesses += 1
     end
-    require'pry' ; binding.pry
     @guesses.count
 
-
-
-
-
-
   end
 
-
-
-
-
-  def start
+  def initial_input
     puts header
     answer = gets.chomp
-    if %["p" "play"].include?(answer.to_s)
-      puts starter
-      answer1 = gets.chomp
-      if answer1.length > 3
-          @guesses << answer1
-          if correct?(answer1)
-            @right_guesses += 1
-          end
-                  # require 'pry' ; binding.pry
-      elsif
-        "gameover"
+      if answer == "p"
+        starter
+        game_over
+      elsif answer == "i"
+        instructions
+        starter
+      else answer == "q"
+        footer
+        abort
       end
-    elsif %["i" "instructions"].include?(answer.to_s)
-      puts instructions
-    else
-      puts "Alright !!! See you later"
-    end
-    # puts percentage
   end
 
-  def play
-    header
 
-    starter
-    instructions
-    start
-    percentage
+
+  def play
+    answer = gets.chomp.to_s
+    if answer == "cheat"
+      puts thing.sequence
+    elsif answer == "q"
+      footer
+    else
+      guess1 = Guess.new(answer, @thing.sequence)
+      record_guesses(guess1)
+      puts guess1.feedback
+    end
+    until @right_guesses == 1
+      puts "do You want to continue? Y for Yes , N for No"
+      answer = gets.chomp.downcase
+      if answer == "y"
+        starter
+      elsif answer == "n"
+        footer
+        abort
+      else
+        puts "Nope not that im looking for"
+      end
+    end
+  end
+
+  def game_over
+      puts "Awesome you got it right in #{(@guesses.length)+1} attempt"
+      percentage
+      puts "------------------!!!!!!!GAME OVER!!!!!!!!------------------"
+
   end
 
   def percentage
-    name = ((@right_guesses.length.to_f/@guesses.length)*100)
+    name = ((@right_guesses.to_f/@guesses.length)*100).to_i
     puts " You Have Scored #{name}%"
   end
 
@@ -76,16 +81,24 @@ class Mastermind
     " or (q)uit?"\
   end
 
+  def guess_again
+    puts"Do you want to continue guessing?"
+  end
+
   def starter
     puts "I have generated a beginner sequence with four elements made "\
     " up of: (r)ed,(g)reen, (b)lue, and (y)ellow. Use (q)uit at any time "\
     "to end the game.What's your guess?"
-
-
+    play
   end
 
   def instructions
     puts "MasterMind consists of the colors Red, Green, Blue,"\
-   "and Yellow "
+    "and Yellow "
+  end
+
+  def footer
+    puts "OHH OK !! see you soon!!"
+    abort
   end
 end
