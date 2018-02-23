@@ -1,4 +1,3 @@
-# require './lib/text_files'
 require_relative 'guess'
 require_relative 'sequence'
 class Mastermind
