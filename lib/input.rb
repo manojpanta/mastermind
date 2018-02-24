@@ -1,0 +1,10 @@
+class Input
+
+
+
+
+
+
+
+
+end
