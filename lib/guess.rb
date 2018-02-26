@@ -1,6 +1,8 @@
 require './lib/combination'
 require './lib/mastermind'
+
 class Guess
+
   attr_reader :response
 
   def initialize(response, thing)
@@ -13,7 +15,6 @@ class Guess
     correct_count = 0
     correct_array = @string.dup
     @response.chars.uniq.each  do |character|
-      # require "pry" ; binding.pry
       @string.sequence.chars.each_with_index do |letter, index|
         if character == letter
           @string.sequence.chars[index] = nil
@@ -23,7 +24,6 @@ class Guess
       end
     end
     correct_count
-
   end
 
   def correct_position
@@ -39,8 +39,6 @@ class Guess
   end
 
   def feedback
-    puts "#{@response} has #{correct_elements} of the correct elements with #{correct_position} in the correct positions
-    You've taken 1 guess"
+    puts "'#{@response.upcase}' has #{correct_elements} of the correct elements with #{correct_position} in the correct positions"
   end
-
 end
