@@ -27,7 +27,17 @@ module Text
 
     def instructions
       puts 'MasterMind consists of the colors Red, Green, Blue,'\
-      'and Yellow '
+      'and Yellow. The computer is gonna generate a seqeuence of '\
+      'colors with the first character of color names of  lenght '\
+      '4.Sequence may have repeating characters such as : "rrgg", '\
+      'which means red in first and second position and green in '\
+      'second and third position, but the length of individual sequence '\
+      'will be 4 all the times.That means your individual guess should not'\
+      ' have more than four characters. if your guess is wrong the system '\
+      'will give you the hint. something like ; your guess "xxxx" has 3 '\
+      'correct letters with 2 in correct positions. But if your guess is '\
+      'right the game will put out a congratulations message with no. of '\
+      ' guesses and time taken. Best of luck !!! '
     end
 
     def guesses_taken
