@@ -9,12 +9,5 @@ class CombinationTest < MiniTest::Test
     combination = Combination.new
     assert_instance_of Combination, combination
     assert_equal "mnin", combination.sequence
-
   end
-
-
-
-
-
-
 end

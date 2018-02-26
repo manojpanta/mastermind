@@ -25,7 +25,6 @@ module Text
       puts 'OHH OK !! see you soon!!'
     end
 
-
     def instructions
       puts 'MasterMind consists of the colors Red, Green, Blue,'\
       'and Yellow '
